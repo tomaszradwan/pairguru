@@ -1,2 +1,12 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+.visible {
+  visibility: visible;
+  // display: block;
+}
+
+.not-visible {
+  visibility: hidden;
+  // display: none;
+}
