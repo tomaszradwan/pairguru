@@ -2,6 +2,9 @@ class CommentsController < ApplicationController
     before_action :authenticate_user!
     skip_before_action :verify_authenticity_token
 
+    def index
+         @Commentators = Comment.all.where("created_at > ?", 7.days.ago).group(:user_id).order('COUNT(comments.id) DESC').limit(10)
+    end
 
     def create
         if !(Comment.where(:user_id => current_user.id, :movie_id => params[:movie_id]).exists?)

@@ -5,5 +5,6 @@ class GenresController < ApplicationController
 
   def movies
     @genre = Genre.find(params[:id]).decorate
+    @comments = Comment.all.order(:movie_id)
   end
 end

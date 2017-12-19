@@ -3,7 +3,7 @@ class MoviesController < ApplicationController
 
   def index
     @movies = Movie.all.decorate
-    @comments = Comment.all.decorate
+    @comments = Comment.all.order('created_at DESC')
   end
 
   def show

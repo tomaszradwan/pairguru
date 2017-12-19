@@ -1,0 +1,10 @@
+%table.table.table-striped
+  %tbody
+    %tr
+      %th #
+      %th User
+  %tbody
+    - commentators.each_with_index do |commentator, i|
+      %tr
+        %td= i + 1
+        %td= commentator.user_name
