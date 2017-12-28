@@ -12,4 +12,6 @@
 
 class Comment < ApplicationRecord
     validates :content, length: { minimum: 2 }
+    belongs_to :user
+    belongs_to :movie
 end
