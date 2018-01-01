@@ -3,11 +3,11 @@ class MoviesController < ApplicationController
 
   def index
     @movies = Movie.all.decorate
-    @comments = Comment.all.order('created_at DESC')
   end
 
   def show
     @movie = Movie.find(params[:id])
+    @comment = Comment.where('movie_id = ?', params[:id]).order('created_at DESC')
   end
 
   def send_info

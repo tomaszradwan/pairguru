@@ -1,19 +1,20 @@
-- if user_signed_in?
+%div
   %div
-    %div
-      %table.table.table-striped
-        %thead
+    %table.table.table-striped
+      %thead
+      - if comments.exists?
+        %tr
+          %th #
+          %th User
+          %th Comment
+          %th
+      %tbody
+        - comments.each_with_index do |comment, i|
           %tr
-            %th User
-            %th Comment
-            %th
-        %tbody
-          - comment.each_with_index do |comments, i|
-            - if movieid == comments.movie_id
-              %tr
-                %td= comments.user_name
-                %td= comments.content
-                - if current_user_id.id == comments.user_id
-                  %td= link_to 'Delete', comments, method: :delete, :name => "deleteCommentLink", :value => comments.id, data: { confirm: 'Are you sure you want to delete this comment?' }
-                - else
-                  %td
+            %td= i + 1
+            %td= comment.user_name
+            %td= comment.content
+            - if current_user.id == comment.user_id
+              %td= link_to 'Delete', comment, method: :delete, :name => "deleteCommentLink", :value => comment.id, data: { confirm: 'Are you sure you want to delete this comment?' }
+            - else
+              %td

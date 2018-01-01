@@ -19,3 +19,6 @@
 /vendor
 
 coverage
+
+Gemfile.lock
+.gitignore

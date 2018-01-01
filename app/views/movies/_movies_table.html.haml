@@ -13,5 +13,3 @@
               = link_to movie.genre.name, movies_genre_path(movie.genre)
             = ' (' + movie.released_at.to_s + ')'
           %p= movie.description
-          = render 'comments/form', movieid: @movies = movie.id, comment: @comments
-          = render 'comments/show', comment: @comments, movieid: @movies = movie.id, current_user_id: current_user

@@ -3,3 +3,6 @@
   = @movie.description
 - if user_signed_in?
   %p= link_to 'Email me details about this movie', send_info_movie_path(@movie), class: 'btn btn-sm btn-default'
+  = render 'comments/form', movie_id: @movie.id, current_user: current_user
+  = render 'comments/show', movie_id: @movie.id, current_user: current_user, comments: @comment
+  %p= link_to 'Back to Movies list', movies_path, class: 'btn btn-sm btn-default'

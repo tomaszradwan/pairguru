@@ -3,8 +3,11 @@
     %tr
       %th #
       %th User
+      %th Number of comments
   %tbody
-    - commentators.each_with_index do |commentator, i|
-      %tr
-        %td= i + 1
-        %td= commentator.user_name
+  - counter = 0
+  - commentators.each do |key, val|
+    %tr
+      %td= counter += 1
+      %td= key
+      %td= val

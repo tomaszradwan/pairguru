@@ -1,5 +1,7 @@
 - if user_signed_in?
-  %form{:action => "\\comments",  :method => "post", :name => "commentForm", :class => "visible"}
-    %textarea#confirmationText.text{:cols => "25", :rows => "3", :name => "commentField", :class => "form-control"}
-    %input{:name => "movie_id", :type => "hidden", :value => movieid}
-    %input{:type => "submit", :value => "Save", :name => "saveComment", :class => "btn btn-default navbar-btn"}/
+  = form_for(:commentForm, :url => {:controller => "comments"}) do |f|
+    = f.hidden_field(:movie_id, value: movie_id)
+    = f.hidden_field(:user_id, value: current_user.id)
+    = f.hidden_field(:user_name, value: current_user.name)
+    = f.text_area(:content, class: 'form-control v-resize')
+    = submit_tag("Save", class: 'btn btn-default navbar-btn')
