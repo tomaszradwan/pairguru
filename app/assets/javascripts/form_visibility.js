@@ -1,5 +1,4 @@
 document.addEventListener("DOMContentLoaded", function() {
-  
     var deleteLinks = document.getElementsByName('deleteCommentLink');
 
     if (deleteLinks.length > 0) {
