@@ -7,9 +7,8 @@ class CommentsController < ApplicationController
   end
 
   def create
-    if (Comment.where(:user_id => current_user.id, :movie_id => params[:movie_id]).length == 0) &&
-      Comment.new(params_comment).save
-      flash[:notice] = 'Comment was successfully created.'
+    if Comment.where(params_comment_where).size == 0 && Comment.new(params_comment).save
+      flash[:notice] = "Comment was successfully created."
     else
       flash[:alert] = 'You cannot add new comment:
         1. delete your previous comment to add new one OR
@@ -29,5 +28,9 @@ class CommentsController < ApplicationController
 
   def params_comment
     params.require(:commentForm).permit(:content, :user_id, :movie_id, :user_name)
+  end
+
+  def params_comment_where
+    params.require(:commentForm).permit(:user_id, :movie_id)
   end
 end
