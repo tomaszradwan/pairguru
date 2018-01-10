@@ -11,6 +11,7 @@ gem "jquery-rails"
 gem "sass-rails"
 gem "sqlite3"
 gem "uglifier"
+gem 'will_paginate', '~> 3.1.0'
 
 group :development do
   gem "better_errors"
